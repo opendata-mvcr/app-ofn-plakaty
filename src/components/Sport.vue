@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button type="button" class="btn btn-secondary m-1" @click="load('http://localhost/michal/dev/tmp/pdf/sportoviste_plasy.json')">Sportoviště Plasy</button>
-    <button type="button" class="btn btn-secondary m-1" @click="load('http://localhost/michal/dev/tmp/pdf/sportoviste.json')">Ukázková sportoviště</button>
+    <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/sportoviste_plasy.json')">Sportoviště Plasy</button>
+    <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/sportoviste.json')">Ukázková sportoviště</button>
 
     <div class="row">
       <!-- RIGHT COLUMN -->
@@ -130,7 +130,7 @@ export default {
       bootswatch: 'journal',
       bootswatches: ['journal', 'cosmo', 'cerulean', 'cyborg', 'darkly', 'flatly', 'litera', 'lumen', 'lux', 'materia', 'minty', 'pulse', 'sandstone', 'siplex', 'sketchy', 'slate', 'solar', 'spacelab', 'superhero', 'united', 'yeti'],
       s: 0,
-      url: 'http://localhost/michal/dev/tmp/pdf/sportoviste_plasy.json'
+      url: 'https://michalskop.gitlab.io/ofnapp/data/sportoviste_plasy.json'
     }
   },
   mounted() {
@@ -162,7 +162,7 @@ export default {
     },
 
     load(url) {
-      if (url == 'undefined') {
+      if (url == 'undefined' || typeof url === 'object') {
         url = this.url
       }
       axios.get(url).then( response =>

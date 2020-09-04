@@ -8,6 +8,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
+    title: 'OFN app',
     component: Home
   },
   {

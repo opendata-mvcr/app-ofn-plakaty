@@ -1,9 +1,9 @@
 <template>
   <div>
-    <button type="button" class="btn btn-secondary m-1" @click="load('http://localhost/michal/dev/tmp/pdf/konvent.json')">Klášter Plasy</button>
-    <button type="button" class="btn btn-secondary m-1" @click="load('http://localhost/michal/dev/tmp/pdf/skala.json')">Malovaná skála</button>
-    <button type="button" class="btn btn-secondary m-1" @click="load('http://localhost/michal/dev/tmp/pdf/lom.json')">Kaolinový důl Kaznějov</button>
-    <button type="button" class="btn btn-secondary m-1" @click="load('http://localhost/michal/dev/tmp/pdf/spilberk.json')">Ŝpilberk</button>
+    <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/konvent.json')">Klášter Plasy</button>
+    <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/skala.json')">Malovaná skála</button>
+    <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/lom.json')">Kaolinový důl Kaznějov</button>
+    <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/spilberk.json')">Ŝpilberk</button>
 
     <div class="row">
       <!-- RIGHT COLUMN -->
@@ -32,7 +32,7 @@
                       {{ description }}
                     </div>
                     <div class="row middle-link pb-3 text-light">
-                      🔗
+                      <span v-if="link">🔗</span>
                       <span class="pl-3"><small>{{ link }}</small></span>
                     </div>
                   </div>
@@ -41,7 +41,7 @@
                   <div>
                     <div class="">
                       <div class="row">
-                        <h3><strong>⏰</strong></h3>
+                        <h3 v-if="open"><strong>⏰</strong></h3>
                       </div>
                       <div class="row">
                         {{ open }} 
@@ -56,7 +56,7 @@
             </div>
 
             <div id="map-wrap">
-              <l-map :zoom="zoom" :center="center" :options="{zoomControl: false}" attribution="AAA" ref="theMap">
+              <l-map :zoom="zoom" :center="center" :options="{zoomControl: false}" ref="theMap">
                 <l-tile-layer :url="map_url"></l-tile-layer>
                 <l-marker :lat-lng="center" > </l-marker>
               </l-map>
@@ -163,7 +163,7 @@ export default {
       bootswatch: 'journal',
       bootswatches: ['journal', 'cosmo', 'cerulean', 'cyborg', 'darkly', 'flatly', 'litera', 'lumen', 'lux', 'materia', 'minty', 'pulse', 'sandstone', 'siplex', 'sketchy', 'slate', 'solar', 'spacelab', 'superhero', 'united', 'yeti'],
       s: 0,
-      url: 'http://localhost/michal/dev/tmp/pdf/konvent.json'
+      url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json'
     }
   },
   mounted() {
@@ -195,7 +195,8 @@ export default {
     },
 
     load(url) {
-      if (url == 'undefined') {
+      console.log(url)
+      if (url == 'undefined' || typeof url === 'object') {
         url = this.url
       }
       axios.get(url).then( response =>
