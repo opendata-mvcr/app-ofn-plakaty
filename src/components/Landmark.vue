@@ -232,7 +232,7 @@ export default {
     },
 
     load(url) {
-      console.log(url)
+      // console.log(url)
       this.pngClass = "btn btn-secondary disabled"
       if (url == 'undefined' || typeof url === 'object') {
         url = this.url

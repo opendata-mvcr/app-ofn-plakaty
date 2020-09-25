@@ -204,7 +204,7 @@ export default {
     },
 
     existInArr(o, property, attr, df) {
-      console.log(o, property, attr, df)
+      // console.log(o, property, attr, df)
       if (typeof o === 'object' && typeof o[property] === 'object'){
         for (let obj of o[property]) {
           if (typeof obj === 'object' && typeof obj[attr] != 'undefined') {
