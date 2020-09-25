@@ -18,7 +18,12 @@
             "type": "Point",
             "coordinates": [13.3820211, 49.9394052]
         }
-    }
+    },
+    "příloha": [{
+        "typ": "Digitální objekt",
+        "url": "http://img16.rajce.idnes.cz/d1602/2/2242/2242222_600b9a0f6b41ebe364b6681a974068ec/images/oslavy_100._let_144.JPG",
+        "typ_média": "http://www.iana.org/assignments/media-types/image/jpg"
+    }]
 },
 {
     "@context": "https://ofn.gov.cz/sportoviště/2020-07-01/kontexty/sportoviště.jsonld",

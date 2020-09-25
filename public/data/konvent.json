@@ -2,7 +2,9 @@
     "@context": "https://ofn.gov.cz/turistické-cíle/2020-07-01/kontexty/turistický-cíl.jsonld",
     "typ": "Turistický cíl",
     "iri": "https://www.klaster-plasy.cz/",
-    "název": "Klášter Plasy",
+    "název": {
+        "cs": "Klášter Plasy"
+    },
     "umístění": {
         "typ": "Umístění",
         "geometrie": {
@@ -10,7 +12,16 @@
             "coordinates": [13.3900939, 49.9346521]
         }
     },
-    "popis": "Klášter byl založen roku 1144, období středověké prosperity definitivně ukončily husitské války. Nového rozkvětu se klášter dostal v období baroka, kdy byl vybudován dnešní vrcholně barokní areál za účasti předních architektů Matheye, Santiniho a Dientzenhofera. Klášter byl zrušen za Josefa II. r. 1785, v 19. století se stal rezidencí rakouského kancléře Metternicha. Roku 1995 byl bývalý klášter prohlášen za národní kulturní památku.",
-    "foto": "https://upload.wikimedia.org/wikipedia/commons/6/66/Konvent_Plasy.jpg",
-    "url": "klaster-plasy.cz"
+    "popis": {
+        "cs": "Klášter byl založen roku 1144, období středověké prosperity definitivně ukončily husitské války. Nového rozkvětu se klášter dostal v období baroka, kdy byl vybudován dnešní vrcholně barokní areál za účasti předních architektů Matheye, Santiniho a Dientzenhofera. Klášter byl zrušen za Josefa II. r. 1785, v 19. století se stal rezidencí rakouského kancléře Metternicha. Roku 1995 byl bývalý klášter prohlášen za národní kulturní památku."
+    },
+    "příloha": [{
+        "typ": "Digitální objekt",
+        "typ_média": "http://www.iana.org/assignments/media-types/image/jpeg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Konvent_Plasy.jpg"
+    }],
+    "kontakt": [{
+        "typ": "Kontakt",
+        "url": "https://klaster-plasy.cz/"
+    }]
 }

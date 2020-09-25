@@ -6,8 +6,8 @@
     <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/spilberk.json')">Ŝpilberk</button>
 
     <div class="row">
-      <!-- RIGHT COLUMN -->
-      <div class="col-8">
+      <!-- LEFT COLUMN -->
+      <div class="col-lg-8">
         <div class="d-flex justify-content-center m-5">
 
           <!-- PDF -->
@@ -68,70 +68,85 @@
 
         </div>
       </div>
-      <!-- / RIGHT COLUMN -->
+      <!-- / LEFT COLUMN -->
 
-      <!-- LEFT COLUMN -->
-      <div class="col-4">
+      <!-- RIGHT COLUMN -->
+      <div class="col-lg-4">
+        <ul class="nav nav-tabs">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Základ</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Detaily</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <!-- SWATCH -->
+            <div class="form-group p-3">
+              <label for="exampleFormControlSelect1">Barevná varianta:</label>
+              <select class="form-control" id="exampleFormControlSelect1" v-model="bootswatch" @change="swatch">
+                <option v-for="(item, index) in bootswatches" :key="index" >
+                  {{ item }}
+                </option>
 
-        <!-- SWATCH -->
-        <div class="form-group p-3">
-          <label for="exampleFormControlSelect1">Barevná varianta:</label>
-          <select class="form-control" id="exampleFormControlSelect1" v-model="bootswatch" @change="swatch">
-            <option v-for="(item, index) in bootswatches" :key="index" >
-              {{ item }}
-            </option>
+              </select>
+            </div>
+            <!-- / SWATCH -->
 
-          </select>
-        </div>
-        <!-- / SWATCH -->
-
-        <div class="row justify-content-center">
-          <div class="col-md-6">
-            <div class="card card-body">
-              <div class="form-group container">
-                <button class="btn btn-primary pl-5 pr-5" @click="download">Vytvořit PDF</button>
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                <!-- <div class="card card-body">
+                  <div class="form-group container"> -->
+                    <button class="btn btn-primary btn-block pl-5 pr-5" @click="download">Vytvořit a stáhnout PDF<br/>(+ vytvořit PNG)</button>
+                  <!-- </div>
+                </div> -->
+                <div class="p-2">
+                  <a :class="pngClass" :href="pngData" id="pngLink" :download="pngName" disabled>Stáhnout PNG</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          <hr/>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-        <hr/>
-
-        <h3>
-          Nastavení turistického cíle
-        </h3>
-        <div class="form-group p-3">
-          <label for="urlInput">Adresa (JSON):</label>
-          <input type="url" class="form-control" id="urlInput" v-model="url" />
-          <button class="btn btn-warning m-1" @click="load">Nahrát nový turistický cíl</button>
+            <h3>
+              Nastavení turistického cíle
+            </h3>
+            <div class="form-group p-3">
+              <label for="urlInput">Adresa (JSON):</label>
+              <input type="url" class="form-control" id="urlInput" v-model="url" />
+              <button class="btn btn-warning m-1" @click="load">Nahrát nový turistický cíl</button>
+            </div>
+            <div class="form-group m-3">
+              <label for="nameInput" class="mb-2">Jméno: </label>
+              <input type="text" class="form-control" id="nameInput" v-model="name" />
+            </div>
+            <div class="form-group m-3">
+              <label for="photoInput" class="mb-2">Foto: </label>
+              <input type="url" class="form-control" id="photoInput" v-model="photo" />
+            </div>
+            <div class="form-group m-3">
+              <label for="descriptionInput" class="mb-2">Popis:</label>
+              <textarea type="text" class="form-control" id="descriptionInput" v-model="description" row="7"></textarea>
+            </div>
+            <div class="form-group m-3">
+              <label for="linkInput" class="mb-2">🔗 Link: </label>
+              <input type="text" class="form-control" id="linkInput" v-model="link" />
+            </div>
+            <div class="form-group m-3">
+              <label for="linkInput" class="mb-2">⏰ Otevřeno: </label>
+              <textarea type="text" class="form-control" id="linkInput" v-model="open" row="7"></textarea>
+            </div>
+            <div class="form-group m-3">
+              <label for="linkInput" class="mb-2">♿ 🍼 Přístupnost: </label>
+              <input type="text" class="form-control" id="linkInput" v-model="access" />
+            </div>
+          </div>
         </div>
-        <div class="form-group m-3">
-          <label for="nameInput" class="mb-2">Jméno: </label>
-          <input type="text" class="form-control" id="nameInput" v-model="name" />
-        </div>
-        <div class="form-group m-3">
-          <label for="photoInput" class="mb-2">Foto: </label>
-          <input type="url" class="form-control" id="photoInput" v-model="photo" />
-        </div>
-        <div class="form-group m-3">
-          <label for="descriptionInput" class="mb-2">Popis:</label>
-          <textarea type="text" class="form-control" id="descriptionInput" v-model="description" row="7"></textarea>
-        </div>
-        <div class="form-group m-3">
-          <label for="linkInput" class="mb-2">🔗 Link: </label>
-          <input type="text" class="form-control" id="linkInput" v-model="link" />
-        </div>
-         <div class="form-group m-3">
-          <label for="linkInput" class="mb-2">⏰ Otevřeno: </label>
-          <textarea type="text" class="form-control" id="linkInput" v-model="open" row="7"></textarea>
-        </div>
-        <div class="form-group m-3">
-          <label for="linkInput" class="mb-2">♿ 🍼 Přístupnost: </label>
-          <input type="text" class="form-control" id="linkInput" v-model="access" />
-        </div>
-
+        
       </div>
-      <!-- / LEFT COLUMN -->
+      <!-- / RIGHT COLUMN -->
     
     </div>
   </div>
@@ -163,7 +178,11 @@ export default {
       bootswatch: 'journal',
       bootswatches: ['journal', 'cosmo', 'cerulean', 'cyborg', 'darkly', 'flatly', 'litera', 'lumen', 'lux', 'materia', 'minty', 'pulse', 'sandstone', 'siplex', 'sketchy', 'slate', 'solar', 'spacelab', 'superhero', 'united', 'yeti'],
       s: 0,
-      url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json'
+      url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json',
+      // url: 'http://localhost:8080/data/konvent.json',
+      pngData: '',
+      pngName: '',
+      pngClass: "btn btn-secondary disabled"
     }
   },
   mounted() {
@@ -192,10 +211,29 @@ export default {
         myobj.remove()
       }
       this.s++
+      this.pngClass = "btn btn-secondary disabled"
+    },
+
+    existCs(obj, attr, df) {
+      if (typeof obj === 'object' && typeof obj[attr] != 'undefined' && typeof obj[attr]['cs'] != 'undefined') {
+        return obj[attr]['cs']
+      } else {
+       return df
+      }
+    },
+
+    existInArr(o, property, attr, df) {
+      for (let obj of o[property]) {
+        if (typeof obj === 'object' && typeof obj[attr] != 'undefined') {
+          return obj[attr]
+        }
+      }
+      return df
     },
 
     load(url) {
       console.log(url)
+      this.pngClass = "btn btn-secondary disabled"
       if (url == 'undefined' || typeof url === 'object') {
         url = this.url
       }
@@ -203,15 +241,11 @@ export default {
         {
           this.info = response.data
           this.center = [this.info['umístění']['geometrie']['coordinates'][1], this.info['umístění']['geometrie']['coordinates'][0]]
-          if (typeof this.info['název'] === 'object' && this.info['název'] !== null) {
-            this.name = this.info['název']['cs']
-          } else {
-            this.name = this.info['název']
-          }
-          this.description = this.info['popis']
-          this.link = this.info['url'],
+          this.name = this.existCs(this.info, 'název', 'Turistický cíl')
+          this.description = this.existCs(this.info, 'popis', 'Ideální turistický cíl')
+          this.link = this.existInArr(this.info, 'kontakt', 'url', null).replace('https://', '').replace('http://', '').replace(/\/$/, "")
           this.open = this.info['open']
-          this.photo = this.info['foto']
+          this.photo = this.existInArr(this.info, 'příloha', 'url', null)
           this.url = url
         }
       )
@@ -232,9 +266,16 @@ export default {
           scrollY: -window.scrollY
         }).then(function (canvas) {
         const img = canvas.toDataURL("image/png", 0.8)
+        // console.log(img)
+        // const imgTag = document.getElementById('pngLink')
+        $this.pngName = $this.name + '-' + $this.bootswatch + ".png"
+        $this.pngData = img.replace('image/png', 'image/octet-stream')
+        // window.location.href = imgTag
+        $this.pngClass = "btn btn-secondary"
         // document.body.appendChild(canvas)
+
         doc.addImage(img, 'PNG', 0, 0)
-        doc.save($this.name + ".pdf")
+        doc.save($this.name + '-' + $this.bootswatch + ".pdf")
       })
     }
   },
@@ -251,6 +292,7 @@ export default {
 /* @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'; */
 /* @import 'https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css'; */
 @import 'https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/journal/bootstrap.min.css';
+
 
 .pdf-container {
   width: 595pt;

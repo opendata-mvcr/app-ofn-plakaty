@@ -200,7 +200,7 @@
     }]
 },
 {
-      "@context": "https://ofn.gov.cz/sportoviště/2020-07-01/kontexty/sportoviště.jsonld",
+    "@context": "https://ofn.gov.cz/sportoviště/2020-07-01/kontexty/sportoviště.jsonld",
     "typ": "Sportoviště",
     "iri": "http://www.hulkgym.cz/zdroj/gym/praha/",
     "název": {

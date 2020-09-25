@@ -2,7 +2,9 @@
     "@context": "https://ofn.gov.cz/turistické-cíle/2020-07-01/kontexty/turistický-cíl.jsonld",
     "typ": "Turistický cíl",
     "iri": "https://www.kaznejov.cz/lom",
-    "název": "Kaolinový lom Kaznějov",
+    "název": {
+        "cs": "Kaolinový lom Kaznějov"
+    },
     "umístění": {
         "typ": "Umístění",
         "geometrie": {
@@ -10,8 +12,17 @@
             "coordinates": [13.3311325, 49.8978675]
         }
     },
-    "popis": "Západně a jihozápadně od Kaznějova je uprostřed lesů největší povrchový kaolinový lom ve střední Evropě.",
-    "foto": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Kazn%C4%9Bjov_-_kaolin_quarry.jpg",
-    "url": "kaznejov.cz",
+    "popis": {
+        "cs": "Západně a jihozápadně od Kaznějova je uprostřed lesů největší povrchový kaolinový lom ve střední Evropě."
+    },
+    "příloha": [{
+        "typ": "Digitální objekt",
+        "typ_média": "http://www.iana.org/assignments/media-types/image/jpeg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Kazn%C4%9Bjov_-_kaolin_quarry.jpg"
+    }],
+    "kontakt": [{
+        "typ": "Kontakt",
+        "url": "https://kaznejov.cz/"
+    }],
     "open": "0-24 (vyhlídka)"
 }
