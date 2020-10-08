@@ -14,6 +14,9 @@ Implementované ukázky:
 - Turistické cíle
 - Sportoviště
 
+### Poznámka - mobily
+Vzhledem k povaze aplikace tato není optimalizována na mobily, ale až od velikosti tabletů a výše.
+
 ## Project setup
 ```
 yarn install

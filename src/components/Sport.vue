@@ -4,7 +4,7 @@
     <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/sportoviste_praha11.json')">Sportoviště Praha 11 / Datový katalog</button>
     <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/sportoviste_ofn.json')">Ukázková sportoviště</button>
     <div class="row">
-      <!-- RIGHT COLUMN -->
+      <!-- LEFT COLUMN -->
       <div class="col-lg-8">
         <div class="d-flex justify-content-center m-5">
 
@@ -56,9 +56,9 @@
 
         </div>
       </div>
-      <!-- / RIGHT COLUMN -->
+      <!-- / LEFT COLUMN -->
 
-      <!-- LEFT COLUMN -->
+      <!-- RIGHT COLUMN -->
       <div class="col-lg-4">
         <ul class="nav nav-tabs">
           <li class="nav-item" role="presentation">
@@ -96,28 +96,29 @@
               </div>
             </div>
           </div>
-        </div>
-        <hr/>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <hr/>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
 
-          <h3>
-            Nastavení sportovišť
-          </h3>
-          <div class="form-group p-3">
-            <label for="urlInput">Adresa (JSON):</label>
-            <input type="url" class="form-control" id="urlInput" v-model="url" />
-            <button class="btn btn-warning m-1" @click="load">Nahrát nový turistický cíl</button>
-          </div>
-          <div class="form-group m-3">
-            <label for="nameInput" class="mb-2">Jméno: </label>
-            <input type="text" class="form-control" id="nameInput" v-model="name" />
-          </div>
-          <div class="form-group m-3">
-            <label for="photoInput" class="mb-2">Foto: </label>
-            <input type="url" class="form-control" id="photoInput" v-model="photo" />
+            <h3>
+              Nastavení sportovišť
+            </h3>
+            <div class="form-group p-3">
+              <label for="urlInput">Adresa (JSON):</label>
+              <input type="url" class="form-control" id="urlInput" v-model="url" />
+              <button class="btn btn-warning m-1" @click="load">Nahrát nový turistický cíl</button>
+            </div>
+            <div class="form-group m-3">
+              <label for="nameInput" class="mb-2">Jméno: </label>
+              <input type="text" class="form-control" id="nameInput" v-model="name" />
+            </div>
+            <div class="form-group m-3">
+              <label for="photoInput" class="mb-2">Foto: </label>
+              <input type="url" class="form-control" id="photoInput" v-model="photo" />
+            </div>
           </div>
         </div>
+
       </div>
       <!-- / RIGHT COLUMN -->
     
