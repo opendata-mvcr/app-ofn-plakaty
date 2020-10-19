@@ -328,9 +328,9 @@ export default {
   left: -5px;
   transform: rotate(-5deg);
 }
-#name > h1 {
+/* #name > h1 {
   font-size: 2.5em; 
-}
+} */
 
 .badge {
   font-size: 1.5em;
