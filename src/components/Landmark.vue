@@ -194,6 +194,15 @@ export default {
       shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
     });
 
+    const query = 'datasets (filters: { conformsTo: "https://ofn.gov.cz/turistické-cíle/2020-07-01/"} ) {    title {      cs    }    publisher {      title {        cs      }    }    distribution (filters: {      mediaType: "http://www.iana.org/assignments/media-types/application/json"   }) {      accessURL    }  }'
+    const myurl = "http://skoda.projekty.ms.mff.cuni.cz/nkod/json/graphql?query={" + query + "}"
+    axios.get(myurl).then( response => {
+      console.log('haha')
+      console.log(response)
+    }
+       
+    )
+
     this.load(this.url)
 
   },
@@ -316,7 +325,11 @@ export default {
 #name {
   position: relative;
   top: -75px;
+  left: -5px;
   transform: rotate(-5deg);
+}
+#name > h1 {
+  font-size: 2.5em; 
 }
 
 .badge {
