@@ -410,10 +410,10 @@ export default {
       let $this = this
 
       html2canvas(document.getElementById('pdf'),  {
-          // scale: 1,
+          scale: 1,
           allowTaint: true,
           useCORS : true,
-          scrollX: 0,
+          scrollX: -window.scrollX - 2 * (window.devicePixelRatio - 1),  // hotfix #9
           scrollY: -window.scrollY
         }).then(function (canvas) {
         const imgSrc = canvas.toDataURL("image/png", 0.8)
@@ -429,10 +429,10 @@ export default {
           var doc = new jsPDF({
             // orientation: 'portrait',
             unit: 'pt',
-            format: [img.width * 3 / 4, img.height * 3 / 4]
+            format: [Math.floor(Math.floor(img.width) * 3 / 4), Math.floor(Math.floor(img.height) * 3 / 4)] // hotfix #9
           })
 
-          doc.addImage(img.src, 'PNG', 0, 0)
+          doc.addImage(img.src, 'PNG', -1, -1)
           doc.save($this.item.name + '-' + $this.bootswatch + ".pdf")
         })
 
@@ -459,7 +459,7 @@ export default {
   height: 842pt; */
   width: 595px;
   height: 842px;
-  outline: 1px #080 solid;
+  /* outline: 1px #080 solid; */
   /* border: 1px #000 solid; */
 }
 
@@ -515,7 +515,7 @@ export default {
   bottom: 0;
 }
 canvas {
-  outline: 1px #000 solid;
+  /* outline: 1px #000 solid; */
 }
 
 </style>
