@@ -28,7 +28,9 @@
                   <div>
                     <div class="row">
                       <h4 class="">🛈</h4>
+                      <span :style="descriptionStyle">
                       {{ item.description }}
+                      </span>
                     </div>
                     <div class="row middle-link pb-3 text-light">
                       <span v-if="item.link">🔗</span>
@@ -122,7 +124,7 @@
               <input type="text" class="form-control" id="nameInput" v-model="item.name" />
             </div>
             <div class="form-group m-3">
-              <label for="nameInput" class="mb-2">Velikost jména: </label>
+              <label for="nameSizeInput" class="mb-2">Velikost jména: </label>
               <input type="number" class="form-control" id="nameSizeInput" v-model="fsize" />
             </div>
             <div class="form-group m-3">
@@ -132,6 +134,10 @@
             <div class="form-group m-3">
               <label for="descriptionInput" class="mb-2">Popis:</label>
               <textarea type="text" class="form-control" id="descriptionInput" v-model="item.description" row="7"></textarea>
+            </div>
+            <div class="form-group m-3">
+              <label for="descriptionSizeInput" class="mb-2">Velikost popisu: </label>
+              <input type="number" class="form-control" id="descriptionSizeInput" v-model="fdsize" />
             </div>
             <div class="form-group m-3">
               <label for="linkInput" class="mb-2">🔗 Link: </label>
@@ -150,9 +156,9 @@
         
       </div>
       <!-- / RIGHT COLUMN -->
-    
     </div>
-    {{ loadedItems }}
+
+    <div id="img" style="display:none"> {{ loadedItems }} </div>
   </div>
 </template>
 
@@ -189,6 +195,7 @@ export default {
       s: 0,
       ss: 0,
       fsize: 150,
+      fdsize: 100,
       // url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json',
       pngData: '',
       pngName: '',
@@ -261,6 +268,9 @@ export default {
     },
     badgeStyle () {
       return "font-size:" + this.fsize + "%"
+    },
+    descriptionStyle () {
+      return "font-size:" + this.fdsize + "%"
     }
   },
   methods: {
@@ -398,11 +408,7 @@ export default {
     // download PDF
     download() {
       let $this = this
-      var doc = new jsPDF({
-        // orientation: 'portrait',
-        // unit: 'pt',
-        // format: [842, 595]
-      })
+
       html2canvas(document.getElementById('pdf'),  {
           // scale: 1,
           allowTaint: true,
@@ -410,17 +416,26 @@ export default {
           scrollX: 0,
           scrollY: -window.scrollY
         }).then(function (canvas) {
-        const img = canvas.toDataURL("image/png", 0.8)
-        // console.log(img)
-        // const imgTag = document.getElementById('pngLink')
-        $this.pngName = $this.name + '-' + $this.bootswatch + ".png"
-        $this.pngData = img.replace('image/png', 'image/octet-stream')
-        // window.location.href = imgTag
-        $this.pngClass = "btn btn-secondary"
-        // document.body.appendChild(canvas)
+        const imgSrc = canvas.toDataURL("image/png", 0.8)
+        const img = new Image()
+        img.src = imgSrc
+        document.getElementById("img").appendChild(img)
+        img.addEventListener('load', function() {
+          // console.log(img.width, img.height)
+          $this.pngName = $this.item.name + '-' + $this.bootswatch + ".png"
+          $this.pngData = img.src.replace('image/png', 'image/octet-stream')
+          $this.pngClass = "btn btn-secondary"
 
-        doc.addImage(img, 'PNG', 0, 0)
-        doc.save($this.item.name + '-' + $this.bootswatch + ".pdf")
+          var doc = new jsPDF({
+            // orientation: 'portrait',
+            unit: 'pt',
+            format: [img.width * 3 / 4, img.height * 3 / 4]
+          })
+
+          doc.addImage(img.src, 'PNG', 0, 0)
+          doc.save($this.item.name + '-' + $this.bootswatch + ".pdf")
+        })
+
       })
     }
   },
@@ -440,14 +455,17 @@ export default {
 
 
 .pdf-container {
-  width: 595pt;
-  height: 842pt;
+  /* width: 595pt;
+  height: 842pt; */
+  width: 595px;
+  height: 842px;
   outline: 1px #080 solid;
   /* border: 1px #000 solid; */
 }
 
 #top {
-  height: 321.56pt; 
+  /* height: 321.56pt;  */
+  height: 321.56px;
   border-bottom: 1px #000 solid;
 }
 
@@ -473,18 +491,21 @@ export default {
 }
 
 #middle {
-  height: 321.59pt;
+  /* height: 321.59pt; */
+  height: 321.59px;
   text-align: justify;
   text-transform: uppercase;
   font-size: 1.15em;
 }
 
 #map-wrap {
-  height: 198.74pt;
+  /* height: 198.74pt; */
+  height: 198.74px;
 }
 
 .content-center {
-   height: 321.59pt;
+   /* height: 321.59pt; */
+   height: 321.59px;
    vertical-align: middle;
    margin-left: 0!important;
 }
