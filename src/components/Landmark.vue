@@ -1,9 +1,8 @@
 <template>
   <div>
-    <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/konvent.json')">Klášter Plasy</button>
-    <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/skala.json')">Malovaná skála</button>
-    <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/lom.json')">Kaolinový důl Kaznějov</button>
-    <button type="button" class="btn btn-secondary m-1" @click="load('https://michalskop.gitlab.io/ofnapp/data/spilberk.json')">Ŝpilberk</button>
+    <span v-for="(it, index) in listItems" :key="index">
+      <button type="button" class="btn btn-secondary m-1" @click="loadIri(it.iri)">{{ it['název'].cs }}</button>
+    </span>
 
     <div class="row">
       <!-- LEFT COLUMN -->
@@ -13,11 +12,11 @@
           <!-- PDF -->
           <div id="pdf" class="pdf-container" ref="pdf">
             <div id="top">
-              <img :src="photo" id="photo" />
+              <img :src="item.photo" id="photo" />
               <div id="name" class="carousel-caption">
                 <h1>
-                  <span class="badge badge-primary">
-                  {{ name }}
+                  <span class="badge badge-primary" :style="badgeStyle">
+                  {{ item.name }}
                   </span>
                 </h1>
               </div>
@@ -29,11 +28,11 @@
                   <div>
                     <div class="row">
                       <h4 class="">🛈</h4>
-                      {{ description }}
+                      {{ item.description }}
                     </div>
                     <div class="row middle-link pb-3 text-light">
-                      <span v-if="link">🔗</span>
-                      <span class="pl-3"><small>{{ link }}</small></span>
+                      <span v-if="item.link">🔗</span>
+                      <span class="pl-3"><small>{{ item.link }}</small></span>
                     </div>
                   </div>
                 </div>
@@ -41,10 +40,10 @@
                   <div>
                     <div class="">
                       <div class="row">
-                        <h3 v-if="open"><strong>⏰</strong></h3>
+                        <h3 v-if="item.open"><strong>⏰</strong></h3>
                       </div>
                       <div class="row">
-                        {{ open }} 
+                        {{ item.open }} 
                       </div>
                     </div>
                     <div class="row middle-link pb-3 text-light">
@@ -56,9 +55,9 @@
             </div>
 
             <div id="map-wrap">
-              <l-map :zoom="zoom" :center="center" :options="{zoomControl: false}" ref="theMap">
+              <l-map :zoom="zoom" :center="item.center" :options="{zoomControl: false}" ref="theMap">
                 <l-tile-layer :url="map_url"></l-tile-layer>
-                <l-marker :lat-lng="center" > </l-marker>
+                <l-marker :lat-lng="item.center" > </l-marker>
               </l-map>
             </div>
 
@@ -86,8 +85,8 @@
             <div class="form-group p-3">
               <label for="exampleFormControlSelect1">Barevná varianta:</label>
               <select class="form-control" id="exampleFormControlSelect1" v-model="bootswatch" @change="swatch">
-                <option v-for="(item, index) in bootswatches" :key="index" >
-                  {{ item }}
+                <option v-for="(it, index) in bootswatches" :key="index" >
+                  {{ it }}
                 </option>
 
               </select>
@@ -115,32 +114,36 @@
             </h3>
             <div class="form-group p-3">
               <label for="urlInput">Adresa (JSON):</label>
-              <input type="url" class="form-control" id="urlInput" v-model="url" />
+              <input type="url" class="form-control" id="urlInput" v-model="item.url" />
               <button class="btn btn-warning m-1" @click="load">Nahrát nový turistický cíl</button>
             </div>
             <div class="form-group m-3">
               <label for="nameInput" class="mb-2">Jméno: </label>
-              <input type="text" class="form-control" id="nameInput" v-model="name" />
+              <input type="text" class="form-control" id="nameInput" v-model="item.name" />
+            </div>
+            <div class="form-group m-3">
+              <label for="nameInput" class="mb-2">Velikost jména: </label>
+              <input type="number" class="form-control" id="nameSizeInput" v-model="fsize" />
             </div>
             <div class="form-group m-3">
               <label for="photoInput" class="mb-2">Foto: </label>
-              <input type="url" class="form-control" id="photoInput" v-model="photo" />
+              <input type="url" class="form-control" id="photoInput" v-model="item.photo" />
             </div>
             <div class="form-group m-3">
               <label for="descriptionInput" class="mb-2">Popis:</label>
-              <textarea type="text" class="form-control" id="descriptionInput" v-model="description" row="7"></textarea>
+              <textarea type="text" class="form-control" id="descriptionInput" v-model="item.description" row="7"></textarea>
             </div>
             <div class="form-group m-3">
               <label for="linkInput" class="mb-2">🔗 Link: </label>
-              <input type="text" class="form-control" id="linkInput" v-model="link" />
+              <input type="text" class="form-control" id="linkInput" v-model="item.link" />
             </div>
             <div class="form-group m-3">
               <label for="linkInput" class="mb-2">⏰ Otevřeno: </label>
-              <textarea type="text" class="form-control" id="linkInput" v-model="open" row="7"></textarea>
+              <textarea type="text" class="form-control" id="linkInput" v-model="item.open" row="7"></textarea>
             </div>
             <div class="form-group m-3">
               <label for="linkInput" class="mb-2">♿ 🍼 Přístupnost: </label>
-              <input type="text" class="form-control" id="linkInput" v-model="access" />
+              <input type="text" class="form-control" id="linkInput" v-model="item.access" />
             </div>
           </div>
         </div>
@@ -149,6 +152,7 @@
       <!-- / RIGHT COLUMN -->
     
     </div>
+    {{ loadedItems }}
   </div>
 </template>
 
@@ -165,24 +169,48 @@ export default {
   name: 'home',
   data() {
     return {
-      name: '',
-      description: '',
-      info: {},
-      link: '',
-      open: '',
-      photo: '',
-      access: '♿ 🍼',
+
+      item: {
+        center: [50, 13.5],
+        name: '',
+        description: '',
+        link: '',
+        open: '',
+        photo: '',
+        access: '♿ 🍼',
+        info: {},
+        url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json'
+      },
+
       map_url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      center: [50, 13.5],
       zoom: 13,
       bootswatch: 'journal',
       bootswatches: ['journal', 'cosmo', 'cerulean', 'cyborg', 'darkly', 'flatly', 'litera', 'lumen', 'lux', 'materia', 'minty', 'pulse', 'sandstone', 'siplex', 'sketchy', 'slate', 'solar', 'spacelab', 'superhero', 'united', 'yeti'],
       s: 0,
-      url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json',
-      // url: 'http://localhost:8080/data/konvent.json',
+      ss: 0,
+      fsize: 150,
+      // url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json',
       pngData: '',
       pngName: '',
-      pngClass: "btn btn-secondary disabled"
+      pngClass: "btn btn-secondary disabled",
+      listLinks: [],
+      listItems: [],
+      defaultUrls: {
+        url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json',
+        dataurl: "https://oha03.mvcr.gov.cz/sparql",
+        dataquery: `PREFIX dcterms: <http://purl.org/dc/terms/>
+        PREFIX dcat: <http://www.w3.org/ns/dcat#>
+        SELECT ?odkazKeStažení
+        WHERE {
+          ?datová_sada a dcat:Dataset ;
+            dcterms:conformsTo <https://ofn.gov.cz/turistické-cíle/2020-07-01/> ;
+            dcat:distribution ?distribuce .
+          ?distribuce a dcat:Distribution ;
+            dcterms:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+            dcat:downloadURL ?odkazKeStažení . 
+        }`,
+        dataformat: 'application/json'
+      }
     }
   },
   mounted() {
@@ -194,19 +222,86 @@ export default {
       shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
     });
 
-    const query = 'datasets (filters: { conformsTo: "https://ofn.gov.cz/turistické-cíle/2020-07-01/"} ) {    title {      cs    }    publisher {      title {        cs      }    }    distribution (filters: {      mediaType: "http://www.iana.org/assignments/media-types/application/json"   }) {      accessURL    }  }'
-    const myurl = "http://skoda.projekty.ms.mff.cuni.cz/nkod/json/graphql?query={" + query + "}"
-    axios.get(myurl).then( response => {
-      console.log('haha')
-      console.log(response)
-    }
-       
-    )
-
-    this.load(this.url)
+    // get list of Link
+    axios.get(this.listUrl).then( response => {
+      this.listLinks = this.extractLinks(response.data.results.bindings)
+      // get list of Items
+      this.listItems = this.getListItems()
+      this.ss++
+    })
+    .catch( error => {
+      console.log(error)
+    })
 
   },
+  computed: {
+    listUrl () {
+      if (typeof this.$route.query.dataurl !== 'undefined') {
+        return this.$route.query.dataurl
+      } else {
+        const myUrl = new URL(this.defaultUrls.dataurl)
+        myUrl.searchParams.append("query", this.defaultUrls.dataquery)
+        myUrl.searchParams.append("format", this.defaultUrls.dataformat)
+        return myUrl.href
+      }
+    },
+    loadedItems () {
+      let x = this.ss
+      if (Array.isArray(this.listItems)) {
+        if (typeof this.$route.query.iri !== 'undefined') {
+          this.loadIri(this.$route.query.iri)
+        } else {
+          // load default item
+          this.load(this.item.url)
+        }
+      } else {
+        this.load(this.item.url)
+      }
+      return x
+    },
+    badgeStyle () {
+      return "font-size:" + this.fsize + "%"
+    }
+  },
   methods: {
+    // get list of items
+    getListItems () {
+      let listItems = []
+      let $this = this
+      for (const link of $this.listLinks) {
+        axios.get($this.corsLink(link)).then( response => {
+          if (Array.isArray(response.data)) {
+            for (const d of response.data) {
+              listItems.push(d)
+            }
+          } else {
+            listItems.push(response.data)
+          }
+        })
+        // .catch( error => {
+        //   // console.log(error)
+        // })
+      }
+      return listItems
+    },
+
+    // extract links from downloaded files
+    extractLinks (bindings) {
+      let listLinks = []
+      for (const b of bindings) {
+        if ((typeof b['odkazKeStažení'] != 'undefined') && (typeof b['odkazKeStažení']['type'] != 'undefined') && ( b['odkazKeStažení']['type'] == 'uri')) {
+          listLinks.push( b['odkazKeStažení']['value'])
+        }
+      }
+      return listLinks
+    },
+
+    // create CORS link (using cors-anywhere.herokuapp.com)
+    corsLink (link) {
+      return "https://cors-anywhere.herokuapp.com/" + link
+    },
+
+    // change swatch theme
     swatch() {
       var head = document.getElementsByTagName('head')[0]
       var style = document.createElement('link')
@@ -223,6 +318,7 @@ export default {
       this.pngClass = "btn btn-secondary disabled"
     },
 
+    // whether exist 'cs' attribute
     existCs(obj, attr, df) {
       if (typeof obj === 'object' && typeof obj[attr] != 'undefined' && typeof obj[attr]['cs'] != 'undefined') {
         return obj[attr]['cs']
@@ -231,6 +327,7 @@ export default {
       }
     },
 
+    // whether attribute exist in array
     existInArr(o, property, attr, df) {
       for (let obj of o[property]) {
         if (typeof obj === 'object' && typeof obj[attr] != 'undefined') {
@@ -240,26 +337,65 @@ export default {
       return df
     },
 
+    // load item from list of items based on iri
+    loadIri(iri) {
+      this.pngClass = "btn btn-secondary disabled"
+
+      let item = {}
+      for (const it of this.listItems) {
+        if (iri == it.iri) {
+          item = it
+          break
+        }
+      }
+      if (Object.keys(item).length > 0) {
+        this.item.info = item
+        this.item.center = [this.item.info['umístění']['geometrie']['coordinates'][1], this.item.info['umístění']['geometrie']['coordinates'][0]]
+        this.item.name = this.existCs(this.item.info, 'název', 'Turistický cíl')
+        this.item.description = this.existCs(this.item.info, 'popis', 'Ideální turistický cíl')
+        this.item.link = this.existInArr(this.item.info, 'kontakt', 'url', null).replace('https://', '').replace('http://', '').replace(/\/$/, "")
+        this.item.open = this.item.info['open']
+        this.item.photo = this.existInArr(this.item.info, 'příloha', 'url', null)
+        this.item.url = ''
+
+      // change iri parameter https://stackoverflow.com/a/61353880/1666623
+        const query = Object.assign({}, this.$route.query);
+        if (this.item.info.iri != this.$route.query.iri) {
+          query.iri = this.item.info.iri
+          this.$router.replace({ query })
+        }
+      }
+
+    },
+
+    // load item from url
     load(url) {
-      // console.log(url)
       this.pngClass = "btn btn-secondary disabled"
       if (url == 'undefined' || typeof url === 'object') {
         url = this.url
       }
       axios.get(url).then( response =>
         {
-          this.info = response.data
-          this.center = [this.info['umístění']['geometrie']['coordinates'][1], this.info['umístění']['geometrie']['coordinates'][0]]
-          this.name = this.existCs(this.info, 'název', 'Turistický cíl')
-          this.description = this.existCs(this.info, 'popis', 'Ideální turistický cíl')
-          this.link = this.existInArr(this.info, 'kontakt', 'url', null).replace('https://', '').replace('http://', '').replace(/\/$/, "")
-          this.open = this.info['open']
-          this.photo = this.existInArr(this.info, 'příloha', 'url', null)
+          this.item.info = response.data
+          this.item.center = [this.item.info['umístění']['geometrie']['coordinates'][1], this.item.info['umístění']['geometrie']['coordinates'][0]]
+          this.item.name = this.existCs(this.item.info, 'název', 'Turistický cíl')
+          this.item.description = this.existCs(this.item.info, 'popis', 'Ideální turistický cíl')
+          this.item.link = this.existInArr(this.item.info, 'kontakt', 'url', null).replace('https://', '').replace('http://', '').replace(/\/$/, "")
+          this.item.open = this.item.info['open']
+          this.item.photo = this.existInArr(this.item.info, 'příloha', 'url', null)
           this.url = url
+
+          // add iri parameter https://stackoverflow.com/a/61353880/1666623
+          // const query = Object.assign({}, this.$route.query);
+          // if (this.item.info.iri != this.$route.query.iri) {
+          //   query.iri = this.item.info.iri
+          //   this.$router.replace({ query })
+          // }
         }
       )
     },
 
+    // download PDF
     download() {
       let $this = this
       var doc = new jsPDF({
@@ -284,7 +420,7 @@ export default {
         // document.body.appendChild(canvas)
 
         doc.addImage(img, 'PNG', 0, 0)
-        doc.save($this.name + '-' + $this.bootswatch + ".pdf")
+        doc.save($this.item.name + '-' + $this.bootswatch + ".pdf")
       })
     }
   },
