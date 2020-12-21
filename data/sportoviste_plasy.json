@@ -1,0 +1,82 @@
+[{
+    "@context": "https://ofn.gov.cz/sportoviště/2020-07-01/kontexty/sportoviště.jsonld",
+    "typ": "Sportoviště",
+    "iri": "http://www.sokolplasy.cz/",
+    "název": {
+        "cs": "Sokol Plasy"
+    },
+    "popis": {
+        "cs": "Hřiště na fotbal (hlavní a tréninkové), volejbal a dětské hřiště."
+    },
+    "kontakt": [{
+        "typ": "Kontakt",
+        "url": "sokolplasy.cz"
+    }],
+    "umístění": {
+        "typ": "Umístění",
+        "geometrie": {
+            "type": "Point",
+            "coordinates": [13.3820211, 49.9394052]
+        }
+    },
+    "příloha": [{
+        "typ": "Digitální objekt",
+        "url": "https://michalskop.gitlab.io/ofnapp/img/IMG_3111.jpg",
+        "typ_média": "http://www.iana.org/assignments/media-types/image/jpg"
+    }]
+},
+{
+    "@context": "https://ofn.gov.cz/sportoviště/2020-07-01/kontexty/sportoviště.jsonld",
+    "typ": "Sportoviště",
+    "iri": "http://www.mestoplasy.cz/",
+    "název": {
+        "cs": "Přírodní koupaliště Plasy"
+    },
+    "popis": {
+        "cs": "Přírodní koupaliště s písečnou pláží vedle rybníka."
+    },
+    "umístění": {
+        "typ": "Umístění",
+        "geometrie": {
+            "type": "Point",
+            "coordinates": [13.3835733, 49.9346072]
+        }
+    }
+},
+{
+    "@context": "https://ofn.gov.cz/sportoviště/2020-07-01/kontexty/sportoviště.jsonld",
+    "typ": "Sportoviště",
+    "iri": "http://www.gplasy.cz/",
+    "název": {
+        "cs": "Hřiště SOŠ Plasy"
+    },
+    "popis": {
+        "cs": "Hřiště s umělým povrchem na fotbal, volejbal nebo tenis."
+    },
+    "umístění": {
+        "typ": "Umístění",
+        "geometrie": {
+            "type": "Point",
+            "coordinates": [13.3828177, 49.9335977]
+        }
+    }
+},
+{
+    "@context": "https://ofn.gov.cz/sportoviště/2020-07-01/kontexty/sportoviště.jsonld",
+    "typ": "Sportoviště",
+    "iri": "http://www.mestoplasy.cz/inline",
+    "název": {
+        "cs": "in-line dráha"
+    },
+    "popis": {
+        "cs": "In-line dráha s asfaltovým povrchem barvy mlatové cesty."
+    },
+    "umístění": {
+        "typ": "Umístění",
+        "geometrie": {
+            "type": "Point",
+            "coordinates": [13.3884182, 49.9361804]
+        }
+    }
+}
+]

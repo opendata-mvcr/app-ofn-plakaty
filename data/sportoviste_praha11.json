@@ -1,0 +1,93 @@
+[
+  {
+    "@context": "https://ofn.gov.cz/sportoviště/2020-07-01/kontexty/sportoviště.jsonld",
+    "typ": "Sportoviště",
+    "iri": "http://www.praha11.cz/sportoviste/",
+    "název": {
+      "cs": "Chodov: workout hřiště"
+    },
+    "popis": {
+      "cs": "Centrální park"
+    },
+    "umístění": {
+      "typ": "Umístění",
+      "geometrie": {
+        "type": "Point",
+        "coordinates": [
+          14.511942,
+          50.028967
+        ]
+      }
+    }
+  },
+  {
+    "@context": "https://ofn.gov.cz/sportoviště/2020-07-01/kontexty/sportoviště.jsonld",
+    "typ": "Sportoviště",
+    "iri": "http://www.praha11.cz/sportoviste/",
+    "název": {
+      "cs": "Chodov: fitness hřiště"
+    },
+    "popis": {
+      "cs": "Chodovská tvrz"
+    },
+    "umístění": {
+      "typ": "Umístění",
+      "geometrie": {
+        "type": "Point",
+        "coordinates": [
+          14.498571,
+          50.037498
+        ]
+      }
+    },
+    "příloha": [
+      {
+        "typ": "Digitální objekt",
+        "url": "https://d34-a.sdn.cz/d_34/c_img_F_I/yktFdo.jpeg?fl=res,667,500,1",
+        "typ_média": "http://www.iana.org/assignments/media-types/image/jpg"
+      }
+    ]
+  },
+  {
+    "@context": "https://ofn.gov.cz/sportoviště/2020-07-01/kontexty/sportoviště.jsonld",
+    "typ": "Sportoviště",
+    "iri": "http://www.praha11.cz/sportoviste/",
+    "název": {
+      "cs": "Chodov: fitness hřiště"
+    },
+    "popis": {
+      "cs": "Jažlovická 1333 - Bohúňova 1343"
+    },
+    "umístění": {
+      "typ": "Umístění",
+      "geometrie": {
+        "type": "Point",
+        "coordinates": [
+          14.524318,
+          50.024333
+        ]
+      }
+    }
+  },
+  {
+    "@context": "https://ofn.gov.cz/sportoviště/2020-07-01/kontexty/sportoviště.jsonld",
+    "typ": "Sportoviště",
+    "iri": "http://www.praha11.cz/sportoviste/",
+    "název": {
+      "cs": "Háje: fitness hřiště"
+    },
+    "popis": {
+      "cs": "park Křtinská"
+    },
+    "umístění": {
+      "typ": "Umístění",
+      "geometrie": {
+        "type": "Point",
+        "coordinates": [
+          14.533686,
+          50.029504
+        ]
+      }
+    }
+  }
+]

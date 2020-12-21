@@ -1,0 +1,28 @@
+{
+    "@context": "https://ofn.gov.cz/turistické-cíle/2020-07-01/kontexty/turistický-cíl.jsonld",
+    "typ": "Turistický cíl",
+    "iri": "https://www.plasy.cz/malovana-skala",
+    "název": {
+        "cs": "Malovaná skála"
+    },
+    "umístění": {
+        "typ": "Umístění",
+        "geometrie": {
+            "type": "Point",
+            "coordinates": [13.3540578, 49.9634331]
+        }
+    },
+    "popis": {
+        "cs": "Skála trčí nad údolím řeky Střely nedaleko Horního Hradiště a je z ní krásný rozhled do kraje. Kdo ji navštíví, může své dojmy zapsat do knihy."
+    },
+    "příloha": [{
+        "typ": "Digitální objekt",
+        "typ_média": "http://www.iana.org/assignments/media-types/image/jpeg",
+        "url": "https://d34-a.sdn.cz/d_34/c_img_E_L/MrECp9.jpeg?fl=res,667,500,1"
+    }],
+    "kontakt": [{
+        "typ": "Kontakt",
+        "url": "https://mestoplasy.cz/"
+    }],
+    "open": "0-24"
+}
