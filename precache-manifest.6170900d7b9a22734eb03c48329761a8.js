@@ -4,8 +4,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/app-ofn-plakaty/css/about.729b759e.css"
   },
   {
-    "revision": "b3648dd67546f0a2f846",
-    "url": "/app-ofn-plakaty/css/app.67ea067c.css"
+    "revision": "477367652e35396af949",
+    "url": "/app-ofn-plakaty/css/app.bf39b7cc.css"
   },
   {
     "revision": "6c123b96ca6ec4ac822d",
@@ -44,7 +44,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/app-ofn-plakaty/img/IMG_3111.jpg"
   },
   {
-    "revision": "eed11dbeb574fc204f3f9ebd1c907f12",
+    "revision": "dd8ef211abf5890912c9019daa46d4c9",
     "url": "/app-ofn-plakaty/index.html"
   },
   {
@@ -52,8 +52,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/app-ofn-plakaty/js/about.63cb1ba0.js"
   },
   {
-    "revision": "b3648dd67546f0a2f846",
-    "url": "/app-ofn-plakaty/js/app.5bf76ab6.js"
+    "revision": "477367652e35396af949",
+    "url": "/app-ofn-plakaty/js/app.5d23ce8c.js"
   },
   {
     "revision": "23755ef84ebe03505140",
