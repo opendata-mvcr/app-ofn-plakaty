@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header />
     <span v-for="(it, index) in listItems" :key="index">
       <button type="button" class="btn btn-secondary m-1" @click="loadIri(it.iri)">{{ it['název'].cs }}</button>
     </span>
@@ -159,6 +160,7 @@
     </div>
 
     <div id="img" style="display:none"> {{ loadedItems }} </div>
+    <Footer />
   </div>
 </template>
 
@@ -169,6 +171,8 @@ import axios from 'axios'
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { Icon } from 'leaflet'
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 
 
 export default {
@@ -195,7 +199,7 @@ export default {
       s: 0,
       ss: 0,
       fsize: 150,
-      fdsize: 100,
+      fdsize: 75,
       // url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json',
       pngData: '',
       pngName: '',
@@ -457,6 +461,8 @@ export default {
     LMap,
     LTileLayer,
     LMarker,
+    Header,
+    Footer
     // FontAwesomeIcon,
   }
 }

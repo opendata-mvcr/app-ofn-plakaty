@@ -3,6 +3,7 @@ export default {
   target: 'static', // default is 'server'
   router: {
     base: '/app-ofn-plakaty/'
-  }
+  },
+  buildModules: ['nuxt-markdown']
 }
   
