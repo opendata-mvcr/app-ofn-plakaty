@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e65d7168a31eb3eecc0b",
+    "revision": "bd504826493d2300ffe6",
     "url": "/app-ofn-plakaty/css/about.729b759e.css"
   },
   {
-    "revision": "6bc76f0ca4bee3225af5",
+    "revision": "eaae3735b82be78bc7c8",
     "url": "/app-ofn-plakaty/css/app.328935d4.css"
   },
   {
-    "revision": "d00f317e2d846cbd45ec",
+    "revision": "ff965e8337193caed7f1",
     "url": "/app-ofn-plakaty/css/chunk-763fddac.7637fcbe.css"
   },
   {
-    "revision": "6c123b96ca6ec4ac822d",
+    "revision": "ffadcae97320c5e0e192",
     "url": "/app-ofn-plakaty/css/chunk-vendors.f32eaac2.css"
   },
   {
@@ -48,32 +48,32 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/app-ofn-plakaty/img/IMG_3111.jpg"
   },
   {
-    "revision": "a92d45649950af9d732ec4790903fdc9",
+    "revision": "2d6c34c1a08f2c79f8f54cf8377c2c17",
     "url": "/app-ofn-plakaty/index.html"
   },
   {
-    "revision": "e65d7168a31eb3eecc0b",
-    "url": "/app-ofn-plakaty/js/about.4c5fd966.js"
+    "revision": "bd504826493d2300ffe6",
+    "url": "/app-ofn-plakaty/js/about.1858870c.js"
   },
   {
-    "revision": "6bc76f0ca4bee3225af5",
-    "url": "/app-ofn-plakaty/js/app.0504649d.js"
+    "revision": "eaae3735b82be78bc7c8",
+    "url": "/app-ofn-plakaty/js/app.7e238798.js"
   },
   {
     "revision": "23755ef84ebe03505140",
     "url": "/app-ofn-plakaty/js/chunk-1a517a1a.de415768.js"
   },
   {
-    "revision": "be22924b775cf579508a",
-    "url": "/app-ofn-plakaty/js/chunk-2d216214.49bf1fba.js"
+    "revision": "bbe813c7ebe923dbece4",
+    "url": "/app-ofn-plakaty/js/chunk-2d216214.f98ebe23.js"
   },
   {
-    "revision": "d00f317e2d846cbd45ec",
-    "url": "/app-ofn-plakaty/js/chunk-763fddac.6ff2c712.js"
+    "revision": "ff965e8337193caed7f1",
+    "url": "/app-ofn-plakaty/js/chunk-763fddac.3b0cb7d5.js"
   },
   {
-    "revision": "6c123b96ca6ec4ac822d",
-    "url": "/app-ofn-plakaty/js/chunk-vendors.fad9d34b.js"
+    "revision": "ffadcae97320c5e0e192",
+    "url": "/app-ofn-plakaty/js/chunk-vendors.1e1e0996.js"
   },
   {
     "revision": "bfa33208f40c0e7cc019a520904406aa",
