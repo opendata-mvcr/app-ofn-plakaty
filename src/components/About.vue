@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Header light="light" />
     <div class="container pt-4 article text-justify">
       <h1 id="uk-zkov-aplikace-k-otev-en-m-form-ln-m-norm-m">Ukázková aplikace k Otevřeným formálním normám</h1>
       <p>Informace o Otevřených formálních normách (OFN): <a href="https://opendata.gov.cz/otev%C5%99en%C3%A9-form%C3%A1ln%C3%AD-normy:start">https://opendata.gov.cz/otev%C5%99en%C3%A9-form%C3%A1ln%C3%AD-normy:start</a></p>
