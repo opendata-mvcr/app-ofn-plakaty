@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/app-ofn-plakaty/precache-manifest.307d6ed53cbb7b84951e8667300a3f50.js"
+  "/app-ofn-plakaty/precache-manifest.49773e9046c5dbcae002f031b4d411f7.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "ofnapp"});
