@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Header light="dark" />
     <span v-for="(it, index) in listItems" :key="index">
       <button type="button" class="btn btn-secondary m-1" @click="loadIri(it.iri)">{{ it['název'].cs }}</button>
     </span>
@@ -189,7 +189,8 @@ export default {
         photo: '',
         access: '♿ 🍼',
         info: {},
-        url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json'
+        // url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json'
+        url: ''
       },
 
       map_url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -208,20 +209,7 @@ export default {
       listItems: [],
       defaultUrls: {
         url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json',
-        // dataurl: "https://oha03.mvcr.gov.cz/sparql",
-        // dataquery: `PREFIX dcterms: <http://purl.org/dc/terms/>
-        // PREFIX dcat: <http://www.w3.org/ns/dcat#>
-        // SELECT ?odkazKeStažení
-        // WHERE {
-        //   ?datová_sada a dcat:Dataset ;
-        //     dcterms:conformsTo <https://ofn.gov.cz/turistické-cíle/2020-07-01/> ;
-        //     dcat:distribution ?distribuce .
-        //   ?distribuce a dcat:Distribution ;
-        //     dcterms:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
-        //     dcat:downloadURL ?odkazKeStažení . 
-        // }`,
-        dataurl: "https://gitlab.com/michalskop/ofnapp/-/raw/master/public/data/konvent.json?inline=false",
-        // dataformat: 'application/json'
+        dataurl: "https://gitlab.com/michalskop/ofnapp/-/raw/master/public/data/konvent.json",
       }
     }
   },
@@ -234,24 +222,15 @@ export default {
       shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
     });
 
-    // // get list of Link
-    // axios.get(this.listUrl).then( response => {
-    //   this.listLinks = this.extractLinks(response.data.results.bindings)
-    //   // get list of Items
-    //   this.listItems = this.getListItems()
-    //   this.ss++
-    // })
-    // .catch( error => {
-    //   console.log(error)
-    // })
-
+    console.log("here: ", this.listUrl)
     this.listLinks = [this.listUrl]
     // get list of Items
     this.listItems = this.getListItems()
 
-  },
+  }, 
   computed: {
     listUrl () {
+      console.log("there:", this.$route.query)
       if (typeof this.$route.query.dataurl !== 'undefined') {
         return this.$route.query.dataurl
       } else {
@@ -268,10 +247,12 @@ export default {
           this.loadIri(this.$route.query.iri)
         } else {
           // load first item or default item
+          console.log("I'm here")
           if (this.listItems.length > 0) {
             this.loadIri(this.listItems[0].iri)
           } else {
-            this.load(this.item.url)
+            console.log("starting load", this.defaultUrls.dataurl)
+            this.load(this.defaultUrls.dataurl)
           }
         }
       } else {
@@ -371,6 +352,7 @@ export default {
           break
         }
       }
+      console.log(item)
       if (Object.keys(item).length > 0) {
         this.item.info = item
         this.item.center = [this.item.info['umístění']['geometrie']['coordinates'][1], this.item.info['umístění']['geometrie']['coordinates'][0]]
@@ -397,21 +379,21 @@ export default {
       query.dataurl = url
       // delete query.iri
       console.log(query)
-      this.$router.replace({ query })
-      // this.pngClass = "btn btn-secondary disabled"
-      // if (url == 'undefined' || typeof url === 'object') {
-      //   url = this.url
-      // }
-      // axios.get(this.corsLink(url)).then( response =>
-      //   {
-      //     this.item.info = response.data
-      //     this.item.center = [this.item.info['umístění']['geometrie']['coordinates'][1], this.item.info['umístění']['geometrie']['coordinates'][0]]
-      //     this.item.name = this.existCs(this.item.info, 'název', 'Turistický cíl')
-      //     this.item.description = this.existCs(this.item.info, 'popis', 'Ideální turistický cíl')
-      //     this.item.link = this.existInArr(this.item.info, 'kontakt', 'url', null).replace('https://', '').replace('http://', '').replace(/\/$/, "")
-      //     this.item.open = this.item.info['open']
-      //     this.item.photo = this.existInArr(this.item.info, 'příloha', 'url', null)
-      //     this.url = url
+      // this.$router.replace({ query })
+      this.pngClass = "btn btn-secondary disabled"
+      if (url == 'undefined' || typeof url === 'object') {
+        url = this.url
+      }
+      axios.get(this.corsLink(url)).then( response =>
+        {
+          this.item.info = response.data
+          this.item.center = [this.item.info['umístění']['geometrie']['coordinates'][1], this.item.info['umístění']['geometrie']['coordinates'][0]]
+          this.item.name = this.existCs(this.item.info, 'název', 'Turistický cíl')
+          this.item.description = this.existCs(this.item.info, 'popis', 'Ideální turistický cíl')
+          this.item.link = this.existInArr(this.item.info, 'kontakt', 'url', null).replace('https://', '').replace('http://', '').replace(/\/$/, "")
+          this.item.open = this.item.info['open']
+          this.item.photo = this.existInArr(this.item.info, 'příloha', 'url', null)
+          this.url = url
 
       //     // add iri parameter https://stackoverflow.com/a/61353880/1666623
       //     // const query = Object.assign({}, this.$route.query);
@@ -419,8 +401,8 @@ export default {
       //     //   query.iri = this.item.info.iri
       //     //   this.$router.replace({ query })
       //     // }
-      //   }
-      // )
+        }
+      )
     },
 
     // download PDF

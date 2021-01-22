@@ -24,11 +24,11 @@
       <h4 id="vlastn-seznam-turistick-ch-c-l-nebo-turistick-c-l-">Vlastní seznam turistických cílů nebo turistický cíl:</h4>
       <p><a href="https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Foha03.mvcr.gov.cz%2Fsoubory%2Fv%C3%ADce-c%C3%ADl%C5%AF.jsonld">https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Foha03.mvcr.gov.cz%2Fsoubory%2Fv%C3%ADce-c%C3%ADl%C5%AF.jsonld</a></p>
       <p>nebo </p>
-      <p><a href="https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https://gitlab.com/michalskop/ofnapp/-/raw/master/public/data/skala.json">https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https://gitlab.com/michalskop/ofnapp/-/raw/master/public/data/skala.json</a></p>
+      <p><a href="https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Fgitlab.com%2Fmichalskop%2Fofnapp%2F-%2Fraw%2Fmaster%2Fpublic%2Fdata%2Flom.json">https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Fgitlab.com%2Fmichalskop%2Fofnapp%2F-%2Fraw%2Fmaster%2Fpublic%2Fdata%2Flom.json</a></p>
       <h4 id="p-m-zobrazen-turistick-ho-c-le">Přímé zobrazení turistického cíle</h4>
       <p><a href="https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Fgitlab.com%2Fmichalskop%2Fofnapp%2F-%2Fraw%2Fmaster%2Fpublic%2Fdata%2Fskala.json">https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Fgitlab.com%2Fmichalskop%2Fofnapp%2F-%2Fraw%2Fmaster%2Fpublic%2Fdata%2Fskala.json</a></p>
       <p>nebo</p>
-      <p><a href="https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Foha03.mvcr.gov.cz%2Fsoubory%2Fv%C3%ADce-c%C3%ADl%C5%AF.jsonld&amp;iri=https%3A%2F%2Fwww.spilberk.cz%2FV%C3%ADcec%C3%ADlov%C3%BD2">https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Foha03.mvcr.gov.cz%2Fsoubory%2Fv%C3%ADce-c%C3%ADl%C5%AF.jsonld&amp;iri=https%3A%2F%2Fwww.spilberk.cz%2FV%C3%ADcec%C3%ADlov%C3%BD2</a></p>
+      <p><a href="https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Foha03.mvcr.gov.cz%2Fsoubory%2Fvíce-cílů.jsonld&iri=https%3A%2F%2Fwww.spilberk.cz%2FVícecílový2">https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Foha03.mvcr.gov.cz%2Fsoubory%2Fvíce-cílů.jsonld&iri=https%3A%2F%2Fwww.spilberk.cz%2FVícecílový2</a></p>
       <h4 id="vlastn-obr-zek">Vlastní obrázek</h4>
       <p>Karlštejn <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Zamek_Karl%C5%A1tejn.jpg/1920px-Zamek_Karl%C5%A1tejn.jpg">https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Zamek_Karl%C5%A1tejn.jpg/1920px-Zamek_Karl%C5%A1tejn.jpg</a></p>
       
