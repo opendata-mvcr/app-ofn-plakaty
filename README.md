@@ -1,7 +1,6 @@
 # Ukázková aplikace k Otevřeným formálním normám
 
-Informace o Otevřených formálních normách (OFN): https://opendata.gov.cz/otev%C5%99en%C3%A9-form%C3%A1ln%C3%AD-normy:start
-
+Informace o Otevřených formálních normách (OFN): https://ofn.gov.cz
 ## Aplikace
 Aplikace je na adrese: https://opendata-mvcr.github.io/app-ofn-plakaty/
 
