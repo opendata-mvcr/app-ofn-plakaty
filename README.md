@@ -27,10 +27,10 @@ https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Foha03.m
 
 nebo 
 
-https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https://gitlab.com/michalskop/ofnapp/-/raw/master/public/data/skala.json
+https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Fmichalskop.gitlab.io%2Fofnapp%2Fdata%2Fskala.json
 
 #### Přímé zobrazení turistického cíle
-https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Fgitlab.com%2Fmichalskop%2Fofnapp%2F-%2Fraw%2Fmaster%2Fpublic%2Fdata%2Fskala.json
+https://opendata-mvcr.github.io/app-ofn-plakaty/#/?dataurl=https%3A%2F%2Fmichalskop.gitlab.io%2Fofnapp%2Fdata%2Fskala.json
 
 nebo
 

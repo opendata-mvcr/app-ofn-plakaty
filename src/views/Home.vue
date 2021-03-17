@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Landmark msg="Welcome to Your Vue.js App"/>
+    <Landmark msg="MVČR Open Data App"/>
   </div>
 </template>
 

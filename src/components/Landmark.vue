@@ -1,6 +1,12 @@
 <template>
   <div>
     <Header light="dark" />
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="loadError">
+      <strong>Problém se zobrazením!</strong> <span>{{ errorMessage }}</span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <span v-for="(it, index) in listItems" :key="index">
       <button type="button" class="btn btn-secondary m-1" @click="loadIri(it.iri)">{{ it['název'].cs }}</button>
     </span>
@@ -208,9 +214,14 @@ export default {
       listLinks: [],
       listItems: [],
       defaultUrls: {
+        // url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json',
         url: 'https://michalskop.gitlab.io/ofnapp/data/konvent.json',
-        dataurl: "https://gitlab.com/michalskop/ofnapp/-/raw/master/public/data/konvent.json",
-      }
+        // opendata-mvcr/app-ofn-plakaty/
+        // dataurl: "https://gitlab.com/michalskop/ofnapp/-/raw/master/public/data/konvent.json",
+        dataurl: "https://michalskop.gitlab.io/ofnapp/data/konvent.json",
+      },
+      loadError: false,
+      errorMessage: ''
     }
   },
   mounted() {
@@ -222,7 +233,7 @@ export default {
       shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
     });
 
-    console.log("here: ", this.listUrl)
+    // console.log("here: ", this.listUrl)
     this.listLinks = [this.listUrl]
     // get list of Items
     this.listItems = this.getListItems()
@@ -230,7 +241,7 @@ export default {
   }, 
   computed: {
     listUrl () {
-      console.log("there:", this.$route.query)
+      // console.log("there:", this.$route.query)
       if (typeof this.$route.query.dataurl !== 'undefined') {
         return this.$route.query.dataurl
       } else {
@@ -247,11 +258,11 @@ export default {
           this.loadIri(this.$route.query.iri)
         } else {
           // load first item or default item
-          console.log("I'm here")
+          // console.log("I'm here")
           if (this.listItems.length > 0) {
             this.loadIri(this.listItems[0].iri)
           } else {
-            console.log("starting load", this.defaultUrls.dataurl)
+            // console.log("starting load", this.defaultUrls.dataurl)
             this.load(this.defaultUrls.dataurl)
           }
         }
@@ -282,9 +293,12 @@ export default {
             listItems.push(response.data)
           }
         })
-        // .catch( error => {
-        //   // console.log(error)
-        // })
+        .catch( error => {
+          console.log("catching error")
+          // console.log("error", error)
+          this.loadError = true
+          this.errorMessage = error
+        })
       }
       return listItems
     },
@@ -302,7 +316,7 @@ export default {
 
     // create CORS link (using cors-anywhere.herokuapp.com)
     corsLink (link) {
-      return "https://cors-anywhere.herokuapp.com/" + link
+      return link
     },
 
     // change swatch theme
@@ -352,7 +366,7 @@ export default {
           break
         }
       }
-      console.log(item)
+      // console.log(item)
       if (Object.keys(item).length > 0) {
         this.item.info = item
         this.item.center = [this.item.info['umístění']['geometrie']['coordinates'][1], this.item.info['umístění']['geometrie']['coordinates'][0]]
@@ -378,7 +392,7 @@ export default {
       const query = Object.assign({}, this.$route.query);
       query.dataurl = url
       // delete query.iri
-      console.log(query)
+      // console.log(query)
       // this.$router.replace({ query })
       this.pngClass = "btn btn-secondary disabled"
       if (url == 'undefined' || typeof url === 'object') {
